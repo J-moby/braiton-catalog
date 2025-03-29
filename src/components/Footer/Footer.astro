@@ -1,0 +1,78 @@
+---
+import Container from "@components/Container/Container";
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="footer">
+  <Container>
+    <div class="footer__main">
+      <a class="footer__logo-link" href="#">
+        <Icon class="footer__logo" name="icon-logo-black" aria-hidden="true" width="180" height="33"/></Icon>
+      </a>
+      <div class="footer__menu">
+        <div class="footer__box">
+          <div class="footer__contact">
+            <span class="footer__name">Адрес:</span>
+            <span class="footer__contact-link"
+              >г. Москва, Нижний проезд, 25/3</span
+            >
+          </div>
+          <div class="footer__contact">
+            <span class="footer__name">Контакты:</span>
+            <a class="footer__contact-link" href="mailto:infobriaton@group.ru"
+              >infobriaton@group.ru</a
+            >
+            <a class="footer__contact-link" href="tel:+78002220037"
+              >+7 (800) 222-00-37</a
+            >
+          </div>
+        </div>
+        <div class="footer__social">
+          <span class="footer__name">Присоединяйтесь к нам:</span>
+          <ul class="footer__social-list">
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">Дзен</a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">Одноклассники</a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">Pinterest</a>
+            </li>
+            <li class="footer__social-item">
+              <a class="footer__social-link" href="#">Вконтакте</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__info">
+        <button class="footer__btn btn">Свяжитесь с нами</button>
+        <ul class="footer__cards">
+          <li class="footer__card">
+            <Icon class="footer__logo" name="icon-visa" aria-hidden="true" width="44" height="15"/></Icon>
+          </li>
+          <li class="footer__card">
+            <Icon class="footer__logo" name="icon-mc" aria-hidden="true" width="34" height="22"/></Icon>
+          </li>
+          <li class="footer__card">
+            <Icon class="footer__logo" name="icon-mir" aria-hidden="true" width="66" height="19"/></Icon>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__policy">
+        <a class="footer__policy-link" href="#"
+          >Политика обработки персональных данных</a
+        >
+        <a class="footer__policy-link" href="#">Политика конфиденциальности</a>
+      </div>
+      <span class="footer__copyright">© ООО "Бриатон"</span>
+      <a class="footer__develop" href="https://affarts.ru/">
+        <span class="footer__develop-text">Дизайн сделан в</span>
+        <Icon class="footer__develop-logo" name="icon-affarts" aria-hidden="true" width="62" height="18"/></Icon>
+      </a>
+    </div>
+  </Container>
+</footer>

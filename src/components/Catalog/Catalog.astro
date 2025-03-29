@@ -1,0 +1,217 @@
+---
+import Container from "@components/Container/Container";
+import ProductCard from "@components/ProductCard/ProductCard";
+import { Icon } from "astro-icon/components";
+import fetchData from "../../scripts/api/fetchProductList";
+
+let data;
+
+try {
+  const response = await fetchData();
+  data = response;
+} catch (error) {
+  console.error("Ошибка при получении данных:", error);
+}
+---
+
+<section class="catalog">
+  <Container>
+    <h1 class="catalog__title">Светильники</h1>
+    <div class="catalog__wrapper">
+      <form action="#" method="get" class="catalog-form">
+        <button class="catalog-form__reset" type="reset">
+          <Icon name="icon-filter" aria-hidden="true" width="24" height="24" />
+          <span class="catalog-form__reset-text">Сбросить фильтры</span>
+        </button>
+        <fieldset class="catalog-form__fieldset">
+          <legend class="catalog-form__legend">Светильники</legend>
+          <ul class="catalog-form__list-col">
+            <li class="catalog-form__item-col">
+              <div class="custom-checkbox custom-checkbox--pendant">
+                <input
+                  class="visually-hidden custom-checkbox__field"
+                  id="pendant"
+                  type="checkbox"
+                  name="type"
+                  value="pendant"
+                />
+                <label class="custom-checkbox__label" for="pendant">
+                  <span class="custom-checkbox__name"> Подвесные </span>
+                  <Icon
+                    class="custom-checkbox__icon"
+                    name="icon-check"
+                    aria-hidden="true"
+                    width="10"
+                    height="10"
+                  />
+                  <span class="custom-checkbox__count">158</span>
+                </label>
+              </div>
+            </li>
+            <li class="catalog-form__item-col">
+              <div class="custom-checkbox custom-checkbox--ceiling">
+                <input
+                  class="visually-hidden custom-checkbox__field"
+                  id="ceiling"
+                  type="checkbox"
+                  name="type"
+                  value="ceiling"
+                />
+                <label class="custom-checkbox__label" for="ceiling">
+                  <span class="custom-checkbox__name"> Потолочные </span>
+                  <Icon
+                    class="custom-checkbox__icon"
+                    name="icon-check"
+                    aria-hidden="true"
+                    width="10"
+                    height="10"
+                  />
+                  <span class="custom-checkbox__count">118</span>
+                </label>
+              </div>
+            </li>
+            <li class="catalog-form__item-col">
+              <div class="custom-checkbox custom-checkbox--overhead">
+                <input
+                  class="visually-hidden custom-checkbox__field"
+                  id="overhead"
+                  type="checkbox"
+                  name="type"
+                  value="overhead"
+                />
+                <label class="custom-checkbox__label" for="overhead">
+                  <span class="custom-checkbox__name"> Накладные </span>
+                  <Icon
+                    class="custom-checkbox__icon"
+                    name="icon-check"
+                    aria-hidden="true"
+                    width="10"
+                    height="10"
+                  />
+                  <span class="custom-checkbox__count">463</span>
+                </label>
+              </div>
+            </li>
+            <li class="catalog-form__item-col">
+              <div class="custom-checkbox custom-checkbox--point">
+                <input
+                  class="visually-hidden custom-checkbox__field"
+                  id="point"
+                  type="checkbox"
+                  name="type"
+                  value="point"
+                />
+                <label class="custom-checkbox__label" for="point">
+                  <span class="custom-checkbox__name"> Точечные </span>
+                  <Icon
+                    class="custom-checkbox__icon"
+                    name="icon-check"
+                    aria-hidden="true"
+                    width="10"
+                    height="10"
+                  />
+                  <span class="custom-checkbox__count">158</span>
+                </label>
+              </div>
+            </li>
+            <li class="catalog-form__item-col">
+              <div class="custom-checkbox custom-checkbox--nightlights">
+                <input
+                  class="visually-hidden custom-checkbox__field"
+                  id="nightlights"
+                  type="checkbox"
+                  name="type"
+                  value="nightlights"
+                />
+                <label class="custom-checkbox__label" for="nightlights">
+                  <span class="custom-checkbox__name"> Ночники </span>
+                  <Icon
+                    class="custom-checkbox__icon"
+                    name="icon-check"
+                    aria-hidden="true"
+                    width="10"
+                    height="10"
+                  />
+                  <span class="custom-checkbox__count">118</span>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset class="catalog-form__fieldset">
+          <legend class="catalog-form__legend">Статус</legend>
+          <ul class="catalog-form__list-row">
+            <li class="catalog-form__item-row">
+              <div class="custom-radio">
+                <input
+                  class="visually-hidden custom-radio__field"
+                  id="instock"
+                  type="radio"
+                  name="status"
+                  value="instock"
+                />
+                <label class="custom-radio__label" for="instock">
+                  <span class="custom-radio__toggle"></span>
+                  <span class="custom-radio__text">В наличии</span>
+                </label>
+              </div>
+            </li>
+            <li class="catalog-form__item-row">
+              <div class="custom-radio">
+                <input
+                  class="visually-hidden custom-radio__field"
+                  id="all-item"
+                  type="radio"
+                  name="status"
+                  value="all-item"
+                  checked
+                />
+                <label class="custom-radio__label" for="all-item">
+                  <span class="custom-radio__toggle"></span>
+                  <span class="custom-radio__text">Все</span>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </fieldset>
+      </form>
+      <div class="catalog__products">
+        <div class="catalog__sort">
+          <p class="catalog__sort-text">Сортировать по:</p>
+          <select class="catalog__sort-select" name="sort">
+            <option value="price-min">Сначала дешёвые</option>
+            <option value="price-max">Сначала дорогие</option>
+            <option value="rating-max">Сначала популярные</option>
+          </select>
+        </div>
+        <ul class="catalog__list">
+          {
+            data ? (
+              data.map((product) => (
+                <ProductCard
+                  name={product.name}
+                  image={product.image}
+                  price={product.price}
+                  availability={product.availability}
+                />
+              ))
+            ) : (
+              <p>Не удалось загрузить товары.</p>
+            )
+          }
+        </ul>
+        <ol class="catalog__pagination">
+          <li class="catalog__pagination-item">
+            <button class="catalog__pagination-link">1</button>
+          </li>
+          <li class="catalog__pagination-item">
+            <button class="catalog__pagination-link">2</button>
+          </li>
+          <li class="catalog__pagination-item">
+            <button class="catalog__pagination-link">3</button>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </Container>
+</section>

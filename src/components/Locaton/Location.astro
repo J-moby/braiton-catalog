@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="location">
+  <Icon class="location__icon" name='icon-location' aria-hidden="true" width="24" height="24"></Icon>
+  <span class="location__text">Ваш город:</span>
+  <button class="location__city" type="button">
+    <span class="location__city-name"></span>
+    <Icon class="location__arrow" name='icon-arrow-bottom' aria-hidden="true" width="9" height="6"></Icon>
+  </button>
+  <ul class="location__sublist">
+    <li class="location__subitem">
+      <button class="location__sublink" type="button">Москва</button>
+    </li>
+    <li class="location__subitem">
+      <button class="location__sublink" type="button">Оренбург</button>
+    </li>
+    <li class="location__subitem">
+      <button class="location__sublink" type="button">Санкт-Петербург</button>
+    </li>
+  </ul>
+</div>

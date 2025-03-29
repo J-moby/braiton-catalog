@@ -1,0 +1,73 @@
+---
+import Container from "@components/Container/Container";
+import { Icon } from "astro-icon/components";
+import CustomImage from "@components/CustomImage/CustomImage";
+---
+
+<section class="questions">
+  <Container>
+    <div class="questions__wrapper">
+      <h2 class="questions__title">
+        <span class="questions__title-text">Сложно выбрать?</span>
+        <span class="questions__title-text">Обратитесь к нам и мы поможем</span>
+      </h2>
+      <CustomImage
+        image={{
+          desktop: "/src/images/lamp.png",
+        }}
+        altText="Фотография лампы"
+        className="questions__img"
+      />
+      <p class="questions__text">
+        Эксперты по светотехнике подберут накладные светильники специально под
+        вашу задачу. Вы получите проект освещения и профессиональную
+        консультацию бесплатно.
+      </p>
+      <form action="#" method="POST" class="questions__form">
+        <div class="questions__inner">
+          <div class="custom-input">
+            <label for="name" class="custon-input__label">Ваше имя</label>
+            <input
+              type="text"
+              class="custom-input__field"
+              id="name"
+              placeholder="Светлана"
+            />
+          </div>
+          <div class="custom-input">
+            <label for="email" class="custon-input__label">Ваша почта</label>
+            <input
+              type="email"
+              class="custom-input__field"
+              id="email"
+              placeholder="example@example.com"
+            />
+          </div>
+          <button class="questions__btn btn btn--big" type="submit"
+            >Отправить заявку</button
+          >
+        </div>
+        <div class="custom-checkbox">
+          <input
+            class="visually-hidden custom-checkbox__field"
+            id="agree"
+            type="checkbox"
+            name="pendant"
+          />
+          <label class="custom-checkbox__label" for="agree">
+            <span class="custom-checkbox__name"
+              >Я согласен с политикой конфиденциальности</span
+            >
+            <Icon
+              class="custom-checkbox__icon"
+              name="icon-check"
+              width="10"
+              height="10"
+              aria-hidden="true"
+            />
+          </label>
+        </div>
+      </form>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,38 @@
+---
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+
+interface Images {
+    desktop: string;
+    desktop2x?: string;
+    tablet?: string;
+    tablet2x?: string;
+    mobile?: string;
+    mobile2x?: string;
+}
+
+interface Props {
+    image: Images;
+    mediaMobile?: number;
+    mediaTablet?: number;
+    altText: string;
+    className: string;
+    ariaHidden?: boolean;
+}
+
+const {image, altText, className, mediaMobile, mediaTablet, ariaHidden=false} = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/**/*.{jpeg,jpg,png,gif}');
+
+const imgDesktop = await getImage({src: images[image.desktop](), format: 'webp'});
+const imgDesktop2x = image?.desktop2x ? await getImage({src: images[image.desktop2x](), format: 'webp'}) : null;
+const imgTablet = image?.tablet ? await getImage({src: images[image.tablet](), format: 'webp'}) : null;
+const imgTablet2x = image?.tablet2x ? await getImage({src: images[image.tablet2x](), format: 'webp'}) : null;
+const imgMobile = image?.mobile ? await getImage({src: images[image.mobile](), format: 'webp'}) : null;
+const imgMobile2x = image?.mobile2x ? await getImage({src: images[image.mobile2x](), format: 'webp'}) : null;
+---
+
+<picture>
+    {imgMobile && <source media=`(max-width: ${mediaMobile}px)` srcset={imgMobile2x ? `${imgMobile.src}, ${imgMobile2x.src} 2x` : `${imgMobile.src}`} width={imgMobile.attributes.width} height={imgMobile.attributes.height}/>}
+    {imgTablet && <source media=`(max-width: ${mediaTablet}px)` srcset={imgTablet2x ? `${imgTablet.src}, ${imgTablet2x.src} 2x` : `${imgTablet.src}`} width={imgTablet.attributes.width} height={imgTablet.attributes.height}/>}
+    <img class={className} src={imgDesktop.src} srcset={imgDesktop2x ? `${imgDesktop2x.src} 2x` : null} width={imgDesktop.attributes.width} height={imgDesktop.attributes.height} alt={altText} aria-hidden={ariaHidden ? true : null} loading="lazy"/>
+</picture>

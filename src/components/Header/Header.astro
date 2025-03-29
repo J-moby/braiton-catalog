@@ -1,0 +1,89 @@
+---
+import MainMenu from "@components/MainMenu/MainMenu";
+import Container from "@components/Container/Container";
+import Location from "@components/Locaton/Location";
+import { Icon } from "astro-icon/components";
+---
+
+<header class="header">
+  <Container>
+    <!-- Header - top -->
+    <div class="header__top">
+      <a href="#" class="header__logo-link">
+        <Icon class="header__logo" name="icon-logo" aria-hidden="true" width="140" height="26"/></Icon>
+      </a>
+      <button class="header__catalog-btn" type="button">
+        <Icon class="header__logo" name="icon-menu" aria-hidden="true" width="24" height="24"/></Icon>
+        <span class="header__catalog-text">Каталог</span>
+      </button>
+
+      <!-- Location -->
+      <Location />
+
+      <!-- User list -->
+      <ul class="header__user-list">
+        <li class="header__user-item">
+          <button class="header__user-btn" type="button">
+            <span class="header__user-text">Корзина</span>
+            <Icon class="header__user-icon" name='icon-basket' aria-hidden="true" width="24" height="24"></Icon>
+            <span class="header__user-count">2</span>
+          </button>
+
+          <!-- Basket -->
+          <div class="header__basket basket">
+            <ul class="basket__list">
+              
+              <!-- <li class="basket__item">
+                <div class="basket__img">
+                  <img src="images/item-1.png" alt="Фотография товара" height="60" width="60">
+                </div>
+                <span class="basket__name">Citilux Идальго CL434321 Бра с выключателем</span>
+                <span class="basket__price">5690 руб</span>
+                <button class="basket__item-close" type="button">
+                  <Icon class="main-menu__icon" name='icon-close' aria-hidden="true" width="24" height="24"></Icon>
+                </button>
+              </li> -->
+              
+            </ul>
+            <!-- <a class="basket__link btn" href="#">Перейти к оформлению</a> -->
+            <div class="basket__empty-block">Корзина пока пуста</div>
+          </div>
+        </li>
+        <li class="header__user-item">
+          <button class="header__user-btn" type="button">
+            <span class="header__user-text">Войти</span>
+            <Icon class="header__user-icon" name='icon-user' aria-hidden="true" width="24" height="24"></Icon>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Header - bottom -->
+    <div class="header__bottom">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#">Отраслевые решения</a>
+        </li>
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#">Портфолио</a>
+        </li>
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#">Клиентам</a>
+        </li>
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#">Партнерам</a>
+        </li>
+        <li class="header__nav-item">
+          <a class="header__nav-link" href="#">Контакты</a>
+        </li>
+      </ul>
+      <div class="header__contacts">
+        <a href="tel:+78002220037" class="header__phone">+7 (800) 222-00-37</a>
+        <button class="header__btn btn" type="button">Обратный звонок</button>
+      </div>
+    </div>
+
+    <!-- Catalog -->
+    <MainMenu />
+  </Container>
+</header>
